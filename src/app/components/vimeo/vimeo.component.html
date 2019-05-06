@@ -1,0 +1,20 @@
+<p>
+  vimeo works!
+</p>
+
+<h2>Show videos</h2>
+<div *ngFor="let video of videos">
+  <h1>{{video.name}}</h1>
+  <div [innerHTML]="video?.embed">
+  </div>
+  <!-- <div [src]="transform(video?.embed?.review_page?.link)">
+    
+  </div> -->
+  <!-- <iframe src="transform(video?.embed?.review_page?.link)" width="320" height="240" frameborder="0" title="video two" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+  <!-- <View class="formRow"> -->
+      <!-- <WebView url="video?.embed?.html"></WebView> -->
+ 
+</div>
+<iframe src="https://player.vimeo.com/video/332896596?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=147162" width="320" height="240" frameborder="0" title="video two" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+<iframe src="https://flix555.com/embed-7mafd36o0jvf.html" scrolling="no" frameborder="0" width="700" height="430" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
