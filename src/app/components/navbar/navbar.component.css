@@ -1,0 +1,30 @@
+.page-color {
+    background: #EEE1CC;
+    background: #102E4C;
+    background: #234C6C;
+    background: #398D47;
+    background: #84CBDD;
+    background: #D0E2F3;
+}
+
+nav {
+    background-color: #D0E2F3 !important;
+    color: white !important;
+}
+nav a {
+    color: #234C6C;
+}
+
+nav ul li a {
+    color: #234C6C;
+}
+
+.btn-login {
+    background: #102E4C;
+    color: white;
+}
+
+.btn-search {
+    background: #398D47;
+    color: white;
+}

@@ -1,18 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { VimeoComponent } from './components/vimeo/vimeo.component';
-
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'vimeo',
-    pathMatch: 'full'
-  },
-  {
-    path: 'vimeo',
-    component: VimeoComponent
-  }
-];
+import { RouterModule } from '@angular/router';
+import { routes } from './app.router';
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
