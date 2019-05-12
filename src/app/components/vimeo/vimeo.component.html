@@ -1,8 +1,33 @@
-<div class="container">
-  <div class="card">
-    <div class="card-body">
-      Hola
+<div class="container-card mt-4">
+  <div>
+    <h4>
+      Videos
+    </h4>
+  </div>
+  <div>
+    <div style="text-align:center">
+      <!-- <input type="file" #file name="video" id="video" accept="video/*" multiple> -->
+      <label class="custom-file-upload mb-2">
+        <input type="file" #file name="video" id="video" accept="video/*" multiple />
+        Upload File
+      </label>
+      <input type="button" class="btn btn-info mr-4 ml-4 mb-2" value="Load video" (click)="start(file.files);">
+      <button type="button" class="btn btn-success mb-2" (click)="videoUpload()">Upload video</button>
     </div>
+  </div>
+  <div class="wrap mb-4">
+    <div *ngFor="let video of videos">
+      <div class="box one">
+        <div class="date">
+          <h4>6/29/18</h4>
+        </div>
+        <h1 (click)="loadVideo(video)">Watch Video {{video?.uri}}</h1>
+        <p style="color:aliceblue">{{video?.link}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div  id="videosnew"></div>
   </div>
 </div>
 

@@ -3,6 +3,7 @@ import { VimeoService } from 'src/app/services/vimeo.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { map, expand } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
+import Player from '@vimeo/player';
 
 export class uploadFiles {
   constructor(public video: File, public path: string, public uploadURI: string) {
@@ -26,17 +27,27 @@ export class VimeoComponent implements OnInit {
   videoLinks = [];
   pendingFiles: uploadFiles[] = [];
 
+  video: any = '335715916';
+  private language = 'en';
+  private player;
+
   constructor(
     private vimeoService: VimeoService,
     private sanitizer: DomSanitizer,
-  ) { }
+  ) {
+    this.transform(this.video);
+  }
 
   ngOnInit() {
+    this.initPlayer();
+    this.getVideos();
+  }
+
+  getVideos() {
     this.vimeoService.getVideo().subscribe(
       (res) => {
         console.log('Estos son los videos, -> ', res.body.data);
         this.videos = res.body.data;
-        // document.body.innerHTML =   transform(url: any) ;
       }
     );
   }
@@ -90,24 +101,40 @@ export class VimeoComponent implements OnInit {
     }
     console.log('start video upload sequentially');
     upload[0].start();
+    this.getVideos();
   }
 
-  // transform(url: any) {
-  //   // return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  //   return this.sanitizer.bypassSecurityTrustUrl(url);
-  // }
+  transform(url?: any) {
+    // return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 
   loadFile(file: any) {
     console.log('-->', file[0]);
     this.fileVideo = file.files.item(0);
   }
 
-  uploadVideo() {
-    // this.vimeoService.uploadVideo(this.fileVideo).subscribe(
-    //   (res) => {
-    //     console.log('success --> ', res);
-    //   }
-    // )
+  loadVideo(video: any) {
+    console.log(video.uri);
+    this.video = video.uri.replace('/videos/', '');
+    console.log(this.video);
+
+    this.player.destroy().then(function () {
+      // the player was destroyed
+    }).catch(function (error) {
+      // an error occurred
+    });
+    this.initPlayer();
+  }
+
+
+  private initPlayer() {
+    console.log('Este es el nuevo video');
+    const options: any = {
+      id: this.video,
+      with: 640
+    }
+    this.player = new Player(document.getElementById('videosnew'), options);
   }
 
 }

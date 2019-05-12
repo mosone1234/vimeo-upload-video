@@ -8,15 +8,19 @@
 }
 
 nav {
-    background-color: #D0E2F3 !important;
+    background-color: #102E4C !important;
     color: white !important;
 }
 nav a {
-    color: #234C6C;
+    color: #D0E2F3;
 }
 
 nav ul li a {
-    color: #234C6C;
+    color: #D0E2F3;
+}
+
+.color {
+    color: #D0E2F3 !important;   
 }
 
 .btn-login {
